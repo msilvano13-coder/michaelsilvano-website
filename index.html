@@ -263,7 +263,7 @@
 
     /* ── NAV ── */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 32px; left: 0; right: 0; z-index: 100;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -639,6 +639,63 @@
       text-transform: uppercase;
       color: var(--peach);
     }
+    .testimonial-break .testimonial-cta {
+      display: inline-block;
+      margin-top: 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--peach);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .testimonial-break .testimonial-cta:hover {
+      color: var(--peach);
+    }
+
+    /* ── URGENCY BANNER ── */
+    .urgency-banner {
+      background: var(--dark);
+      color: var(--ivory);
+      text-align: center;
+      padding: 0.7rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 101;
+    }
+    .urgency-banner a {
+      color: var(--peach);
+      text-decoration: none;
+      margin-left: 1rem;
+      border-bottom: 1px solid var(--peach);
+      padding-bottom: 1px;
+      transition: opacity 0.3s;
+    }
+    .urgency-banner a:hover { opacity: 0.7; }
+
+    /* ── REVIEW BADGE ── */
+    .review-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-top: 1.5rem;
+    }
+    .review-badge .stars { color: #d4a853; font-size: 0.85rem; letter-spacing: 0; }
 
     /* ── FAQ ── */
     #faq { background: var(--white); }
@@ -827,6 +884,10 @@
   </div>
 
   <!-- ── HERO ── -->
+  <div class="urgency-banner">
+    Limited dates remaining for 2026 · Now booking 2027 <a href="#contact">Inquire</a>
+  </div>
+
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
@@ -835,6 +896,7 @@
       <p class="hero-subtitle">Documenting love stories across New England</p>
       <div class="hero-line"></div>
       <a href="#contact" class="hero-cta">Begin Your Story</a>
+      <div class="review-badge"><span class="stars">★★★★★</span> 5.0 from 74 Google Reviews</div>
     </div>
     <div class="hero-scroll">
       <span>Scroll</span>
@@ -872,6 +934,7 @@
   <div class="testimonial-break">
     <blockquote>"Michael is a breath of fresh air. When he walked in the door I felt an immediate calmness which was extremely welcomed on our wedding day."</blockquote>
     <cite></cite>
+    <a href="#contact" class="testimonial-cta">Start the Conversation</a>
   </div>
 
   <!-- ── PORTFOLIO (continued) ── -->
@@ -897,6 +960,7 @@
   <div class="testimonial-break">
     <blockquote>"The search for your wedding photographer ends here with Michael. My husband and I are so incredibly grateful we were able to find someone as attentive, genuine, calming, and amazing to be our wedding photographer."</blockquote>
     <cite></cite>
+    <a href="#contact" class="testimonial-cta">Let's Talk About Your Day</a>
   </div>
 
   <!-- ── ABOUT ── -->
@@ -938,6 +1002,7 @@
   <div class="testimonial-break">
     <blockquote>"What you are getting with Michael Silvano as your photographer is someone that cares deeply about you, your photos and how they will make you feel through the years. His style is romantic, artistic and incredibly timeless."</blockquote>
     <cite></cite>
+    <a href="#contact" class="testimonial-cta">See If Your Date Is Available</a>
   </div>
 
   <!-- ── EXPERIENCE / SERVICES ── -->
@@ -984,6 +1049,7 @@
   <div class="testimonial-break">
     <blockquote>"Not only is Michael massively talented, he's extremely easy to work with while also being completely professional. Michael was the only photographer for my destination elopement, and the pictures that he captured were breathtaking and effortless."</blockquote>
     <cite></cite>
+    <a href="#contact" class="testimonial-cta">Begin Your Story</a>
   </div>
 
   <!-- ── FEATURED STORIES ── -->
@@ -1030,6 +1096,7 @@
   <div class="testimonial-break">
     <blockquote>"Michael is not only a very talented and detail oriented photographer, but he's an amazing person all around. He never once dropped the smile from his face."</blockquote>
     <cite></cite>
+    <a href="#contact" class="testimonial-cta">Inquire About Your Wedding</a>
   </div>
 
   <!-- ── FAQ ── -->
