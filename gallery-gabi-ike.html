@@ -25,14 +25,31 @@
     .gallery-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; font-style: italic; color: var(--dark); margin-bottom: 1rem; }
     .gallery-hero .venue { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.5rem; }
     .gallery-hero .description { font-size: 0.95rem; color: var(--text); max-width: 600px; margin: 0 auto; line-height: 2; font-style: italic; }
-    .gallery-masonry { column-count: 3; column-gap: 8px; padding: 0 3rem 5rem; max-width: 1400px; margin: 0 auto; }
-    .gallery-masonry img { width: 100%; margin-bottom: 8px; break-inside: avoid; }
+
+    .gallery-collage {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 0 2rem 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .gallery-collage img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-collage .item { overflow: hidden; }
+    .gallery-collage .span-2c { grid-column: span 2; }
+    .gallery-collage .span-2r { grid-row: span 2; }
+    .gallery-collage .span-2x2 { grid-column: span 2; grid-row: span 2; }
+
     .gallery-footer { text-align: center; padding: 4rem 2rem; background: var(--ivory); }
     .gallery-footer p { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--dark); margin-bottom: 1.5rem; }
     .gallery-footer a { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--peach); color: var(--peach); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; }
     .gallery-footer a:hover { background: var(--peach); color: var(--white); }
-    @media (max-width: 768px) { .gallery-masonry { column-count: 2; padding: 0 1rem 3rem; } .gallery-nav { padding: 1rem 1.5rem; } .gallery-hero { padding: 8rem 1.5rem 3rem; } }
-    @media (max-width: 480px) { .gallery-masonry { column-count: 1; } }
+    @media (max-width: 768px) { .gallery-collage { grid-template-columns: repeat(3, 1fr); padding: 0 1rem 3rem; } .gallery-nav { padding: 1rem 1.5rem; } .gallery-hero { padding: 8rem 1.5rem 3rem; } }
+    @media (max-width: 480px) { .gallery-collage { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -48,50 +65,54 @@
     <p class="description">Surrounded by glass walls and towering green, Gabi and Ike's celebration felt like stepping into another world — warm, unhurried, and impossibly beautiful.</p>
   </div>
 
-  <div class="gallery-masonry">
-    <img src="Gabi and Ike Blog Post/main2.jpg" alt="Gabi and Ike portrait" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790009.jpg" alt="Greenhouse ceremony setup" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000011840001.jpg" alt="Getting ready details" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790006.jpg" alt="Botanical center details" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000011840003.jpg" alt="Film photography details" loading="lazy">
-    <img src="Gabi and Ike Blog Post/098A4105.jpg" alt="Bridal portrait" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000011840006.jpg" alt="Wedding day moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/098A4130.jpg" alt="Couple portrait" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790011.jpg" alt="Greenhouse ceremony" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790016.jpg" alt="Ceremony moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790023.jpg" alt="Wedding vows" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790026.jpg" alt="Ceremony details" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790033.jpg" alt="First kiss" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062790035.jpg" alt="Recessional" loading="lazy">
-    <img src="Gabi and Ike Blog Post/098A4446.jpg" alt="Couple portraits" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062810023.jpg" alt="Cocktail hour" loading="lazy">
-    <img src="Gabi and Ike Blog Post/SHP_0378.jpg" alt="Reception details" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062820004.jpg" alt="Reception moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062820021.jpg" alt="Dinner details" loading="lazy">
-    <img src="Gabi and Ike Blog Post/098A5564.jpg" alt="Speeches" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062820033.jpg" alt="Toast moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062820035.jpg" alt="Candid reception" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062820036.jpg" alt="Dance floor" loading="lazy">
-    <img src="Gabi and Ike Blog Post/SHP_0738.jpg" alt="First dance" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062840001.jpg" alt="Party moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062840010.jpg" alt="Guests dancing" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062840012.jpg" alt="Reception energy" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062840018.jpg" alt="Late night moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062840025.jpg" alt="Dancing on film" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062840030.jpg" alt="Celebration" loading="lazy">
-    <img src="Gabi and Ike Blog Post/098A7573.jpg" alt="Evening portraits" loading="lazy">
-    <img src="Gabi and Ike Blog Post/098A7629.jpg" alt="Night photography" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880003.jpg" alt="Film moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880004.jpg" alt="Late night film" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880005.jpg" alt="Party vibes" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880008.jpg" alt="Dance floor energy" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880015.jpg" alt="Guests celebrating" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880019.jpg" alt="Reception film" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062880021.jpg" alt="End of night" loading="lazy">
-    <img src="Gabi and Ike Blog Post/SHP_9977.jpg" alt="Final moments" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062940024.jpg" alt="Sparkler exit" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062950027.jpg" alt="Night portraits" loading="lazy">
-    <img src="Gabi and Ike Blog Post/000062950030.jpg" alt="Grand exit" loading="lazy">
+  <div class="gallery-collage">
+    <!-- PREP & DETAILS -->
+    <div class="item span-2c"><img src="Gabi and Ike Blog Post/main2.jpg" alt="Gabi and Ike portrait" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/098A4105.jpg" alt="Ring details" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000011840001.jpg" alt="Getting ready on film" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000011840003.jpg" alt="Bridal details" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000011840006.jpg" alt="Wedding prep" loading="lazy"></div>
+    <div class="item span-2r"><img src="Gabi and Ike Blog Post/098A4130.jpg" alt="Bride portrait" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/SHP_9977.jpg" alt="Bridal details" loading="lazy"></div>
+    <!-- CEREMONY -->
+    <div class="item span-2c"><img src="Gabi and Ike Blog Post/main1.jpg" alt="Greenhouse ceremony venue" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062790006.jpg" alt="Botanical center aisle" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062790011.jpg" alt="Ceremony begins" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062790016.jpg" alt="Vows" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062790023.jpg" alt="Ceremony moment" loading="lazy"></div>
+    <div class="item span-2c"><img src="Gabi and Ike Blog Post/000062790026.jpg" alt="Ring exchange" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062790033.jpg" alt="First kiss" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062790035.jpg" alt="Recessional" loading="lazy"></div>
+    <!-- PORTRAITS -->
+    <div class="item span-2x2"><img src="Gabi and Ike Blog Post/098A4446.jpg" alt="Couple portraits" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/098A5564.jpg" alt="Golden hour portrait" loading="lazy"></div>
+    <!-- RECEPTION -->
+    <div class="item"><img src="Gabi and Ike Blog Post/SHP_0378.jpg" alt="Reception setup" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062820004.jpg" alt="Table details" loading="lazy"></div>
+    <div class="item span-2c"><img src="Gabi and Ike Blog Post/000062820021.jpg" alt="Dinner" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062820033.jpg" alt="Toasts" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062820035.jpg" alt="Speeches" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062820036.jpg" alt="Reactions" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/SHP_0738.jpg" alt="First dance" loading="lazy"></div>
+    <!-- PARTY -->
+    <div class="item span-2c"><img src="Gabi and Ike Blog Post/098A7573.jpg" alt="Evening portraits" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062840001.jpg" alt="Dance floor" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062840010.jpg" alt="Guests dancing" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062840012.jpg" alt="Party energy" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062840018.jpg" alt="Late night dancing" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062840025.jpg" alt="Dance floor film" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062840030.jpg" alt="Celebration" loading="lazy"></div>
+    <div class="item span-2r"><img src="Gabi and Ike Blog Post/098A7629.jpg" alt="Tent dancing" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880003.jpg" alt="Film party moments" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880004.jpg" alt="Night on film" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880005.jpg" alt="Party vibes" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880008.jpg" alt="Dance energy" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880015.jpg" alt="Guests" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880019.jpg" alt="Late night film" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062880021.jpg" alt="End of night" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062940024.jpg" alt="Sparkler exit" loading="lazy"></div>
+    <div class="item span-2c"><img src="Gabi and Ike Blog Post/000062950027.jpg" alt="Night portraits" loading="lazy"></div>
+    <div class="item"><img src="Gabi and Ike Blog Post/000062950030.jpg" alt="Grand exit" loading="lazy"></div>
   </div>
 
   <div class="gallery-footer">

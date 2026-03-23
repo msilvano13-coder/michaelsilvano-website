@@ -25,14 +25,31 @@
     .gallery-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; font-style: italic; color: var(--dark); margin-bottom: 1rem; }
     .gallery-hero .venue { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.5rem; }
     .gallery-hero .description { font-size: 0.95rem; color: var(--text); max-width: 600px; margin: 0 auto; line-height: 2; font-style: italic; }
-    .gallery-masonry { column-count: 3; column-gap: 8px; padding: 0 3rem 5rem; max-width: 1400px; margin: 0 auto; }
-    .gallery-masonry img { width: 100%; margin-bottom: 8px; break-inside: avoid; }
+
+    .gallery-collage {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 0 2rem 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .gallery-collage img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-collage .item { overflow: hidden; }
+    .gallery-collage .span-2c { grid-column: span 2; }
+    .gallery-collage .span-2r { grid-row: span 2; }
+    .gallery-collage .span-2x2 { grid-column: span 2; grid-row: span 2; }
+
     .gallery-footer { text-align: center; padding: 4rem 2rem; background: var(--ivory); }
     .gallery-footer p { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--dark); margin-bottom: 1.5rem; }
     .gallery-footer a { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--peach); color: var(--peach); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; }
     .gallery-footer a:hover { background: var(--peach); color: var(--white); }
-    @media (max-width: 768px) { .gallery-masonry { column-count: 2; padding: 0 1rem 3rem; } .gallery-nav { padding: 1rem 1.5rem; } .gallery-hero { padding: 8rem 1.5rem 3rem; } }
-    @media (max-width: 480px) { .gallery-masonry { column-count: 1; } }
+    @media (max-width: 768px) { .gallery-collage { grid-template-columns: repeat(3, 1fr); padding: 0 1rem 3rem; } .gallery-nav { padding: 1rem 1.5rem; } .gallery-hero { padding: 8rem 1.5rem 3rem; } }
+    @media (max-width: 480px) { .gallery-collage { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -48,50 +65,54 @@
     <p class="description">An outdoor ceremony beneath a centuries-old tree, hydrangeas lining the aisle, and a reception that carried well into the night — Meghan and Pat's day was pure New England elegance.</p>
   </div>
 
-  <div class="gallery-masonry">
-    <img src="Meghan and Pat Blog Post/main2.jpg" alt="Meghan and Pat portrait" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1193.jpg" alt="Getting ready" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000011780020.jpg" alt="Film details" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1202.jpg" alt="Bridal details" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1248.jpg" alt="Bride portrait" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1268.jpg" alt="Wedding prep" loading="lazy">
-    <img src="Meghan and Pat Blog Post/OL9A9620.jpg" alt="Venue details" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1425.jpg" alt="First look" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1444.jpg" alt="Couple portraits" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1476.jpg" alt="Bridal party" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1515.jpg" alt="Wedding party" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062830007.jpg" alt="Ceremony setup" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062830027.jpg" alt="Ceremony aisle" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062830029.jpg" alt="Outdoor ceremony under tree" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062830033.jpg" alt="Vows" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A1630.jpg" alt="Ceremony moments" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062850028.jpg" alt="Recessional" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2228.jpg" alt="Couple portraits golden hour" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2324.jpg" alt="Evening portraits" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2337.jpg" alt="Romantic portrait" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062860010.jpg" alt="Cocktail hour on film" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062860016.jpg" alt="Reception details" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062860021.jpg" alt="Table settings" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062860023.jpg" alt="Dinner moments" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2522.jpg" alt="Speeches" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2548.jpg" alt="Toast" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2553.jpg" alt="Reactions" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2645.jpg" alt="First dance" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A2659.jpg" alt="Dancing" loading="lazy">
-    <img src="Meghan and Pat Blog Post/OL9A0510.jpg" alt="Reception energy" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062870026.jpg" alt="Dance floor on film" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062870031.jpg" alt="Party moments" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A3582.jpg" alt="Late night dancing" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A3606.jpg" alt="Celebration" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A3648.jpg" alt="Guest moments" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A3670.jpg" alt="Party vibes" loading="lazy">
-    <img src="Meghan and Pat Blog Post/098A3815.jpg" alt="Night photography" loading="lazy">
-    <img src="Meghan and Pat Blog Post/OL9A0906.jpg" alt="Evening moments" loading="lazy">
-    <img src="Meghan and Pat Blog Post/OL9A0983.jpg" alt="Dance floor energy" loading="lazy">
-    <img src="Meghan and Pat Blog Post/OL9A0987.jpg" alt="Late night" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062900004.jpg" alt="Film reception" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062900006.jpg" alt="End of night" loading="lazy">
-    <img src="Meghan and Pat Blog Post/000062950013.jpg" alt="Grand exit" loading="lazy">
+  <div class="gallery-collage">
+    <!-- PREP & DETAILS -->
+    <div class="item span-2c"><img src="Meghan and Pat Blog Post/main2.jpg" alt="Meghan and Pat portrait" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1193.jpg" alt="Bouquets" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000011780020.jpg" alt="Film details" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1202.jpg" alt="Bridal details" loading="lazy"></div>
+    <div class="item span-2r"><img src="Meghan and Pat Blog Post/098A1248.jpg" alt="Bride portrait" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1268.jpg" alt="Getting ready" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/OL9A9620.jpg" alt="Venue exterior" loading="lazy"></div>
+    <!-- FIRST LOOK & PORTRAITS -->
+    <div class="item span-2x2"><img src="Meghan and Pat Blog Post/098A1425.jpg" alt="First look" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1444.jpg" alt="Couple portraits" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1476.jpg" alt="Bridal party" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1515.jpg" alt="Wedding party" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A1630.jpg" alt="Pre-ceremony moment" loading="lazy"></div>
+    <!-- CEREMONY -->
+    <div class="item span-2c"><img src="Meghan and Pat Blog Post/000062830029.jpg" alt="Ceremony under tree" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062830007.jpg" alt="Ceremony aisle" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062830027.jpg" alt="Walking down aisle" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062850028.jpg" alt="Recessional" loading="lazy"></div>
+    <!-- GOLDEN HOUR -->
+    <div class="item span-2c"><img src="Meghan and Pat Blog Post/098A2228.jpg" alt="Golden hour portraits" loading="lazy"></div>
+    <div class="item span-2r"><img src="Meghan and Pat Blog Post/098A2324.jpg" alt="Evening portrait" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A2337.jpg" alt="Romantic portrait" loading="lazy"></div>
+    <!-- RECEPTION -->
+    <div class="item"><img src="Meghan and Pat Blog Post/000062860010.jpg" alt="Cocktail hour on film" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062860016.jpg" alt="Reception details" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062860021.jpg" alt="Table settings" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062860023.jpg" alt="Dinner candlelight" loading="lazy"></div>
+    <div class="item span-2c"><img src="Meghan and Pat Blog Post/098A2522.jpg" alt="Speeches" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A2548.jpg" alt="Toast" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A2553.jpg" alt="Reactions" loading="lazy"></div>
+    <!-- DANCING & PARTY -->
+    <div class="item span-2x2"><img src="Meghan and Pat Blog Post/098A2645.jpg" alt="First dance" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/OL9A0510.jpg" alt="Dance floor" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062870026.jpg" alt="Dancing on film" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062870031.jpg" alt="Party moments" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A3582.jpg" alt="Late night dancing" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A3606.jpg" alt="Celebration" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A3648.jpg" alt="Guest moments" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/098A3670.jpg" alt="Party energy" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/OL9A0906.jpg" alt="Evening vibes" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/OL9A0983.jpg" alt="Dance floor energy" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/OL9A0987.jpg" alt="Late night" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062900004.jpg" alt="Film reception" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062900006.jpg" alt="Night on film" loading="lazy"></div>
+    <div class="item span-2c"><img src="Meghan and Pat Blog Post/098A3815.jpg" alt="Grand exit under string lights" loading="lazy"></div>
+    <div class="item"><img src="Meghan and Pat Blog Post/000062950013.jpg" alt="End of night" loading="lazy"></div>
   </div>
 
   <div class="gallery-footer">
