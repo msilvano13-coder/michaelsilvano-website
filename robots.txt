@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.michaelsilvano.com/sitemap.xml
 
-# Michael Silvano Photography
-# Boston & New England Wedding Photographer
+Sitemap: https://www.michaelsilvano.com/sitemap.xml
