@@ -1446,17 +1446,27 @@
       }
       initEditables();
 
-      // Toggle editor
+      // Toggle editor — keyboard shortcut OR ?edit in URL
+      function toggleEditor() {
+        editorActive = !editorActive;
+        document.body.classList.toggle('editor-active', editorActive);
+        if (!editorActive) {
+          deselectAll();
+          tooltip.classList.remove('visible');
+          contextMenu.classList.remove('visible');
+        }
+      }
+
+      // Auto-activate if ?edit is in the URL
+      if (window.location.search.includes('edit')) {
+        toggleEditor();
+      }
+
+      // Keyboard: Ctrl+Shift+. OR Ctrl+Shift+/
       document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === '.') {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === '.' || e.key === '/')) {
           e.preventDefault();
-          editorActive = !editorActive;
-          document.body.classList.toggle('editor-active', editorActive);
-          if (!editorActive) {
-            deselectAll();
-            tooltip.classList.remove('visible');
-            contextMenu.classList.remove('visible');
-          }
+          toggleEditor();
         }
       });
 
