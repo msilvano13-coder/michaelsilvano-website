@@ -850,9 +850,146 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── VISUAL EDITOR ── */
+    .editor-toolbar {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 40px; z-index: 10002;
+      background: rgba(30,30,30,0.92);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+    body.editor-active .editor-toolbar { display: flex; }
+    .editor-toolbar__label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: #e07a4a;
+    }
+    .editor-toolbar__actions { display: flex; gap: 8px; }
+    .editor-toolbar__actions button {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: none; padding: 5px 14px;
+      border-radius: 3px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .editor-toolbar__actions button:hover { background: rgba(255,255,255,0.15); }
+    .editor-toolbar__actions button.save-btn {
+      background: #e07a4a; border-color: #e07a4a; color: #fff;
+    }
+    .editor-toolbar__actions button.save-btn:hover { background: #c96a3e; }
+
+    body.editor-active .nav { top: 40px; }
+    body.editor-active .urgency-banner { top: 40px; }
+    body.editor-active .mobile-menu { top: 40px; }
+
+    body.editor-active .gallery-item,
+    body.editor-active .about-image-wrapper,
+    body.editor-active .story-card,
+    body.editor-active .experience-card,
+    body.editor-active .testimonial-break blockquote,
+    body.editor-active .hero-content,
+    body.editor-active .about-text,
+    body.editor-active .contact-left,
+    body.editor-active section > *,
+    body.editor-active .featured-gallery .gallery-item {
+      outline: 1px dashed transparent;
+      transition: outline-color 0.2s;
+    }
+    body.editor-active .gallery-item:hover,
+    body.editor-active .about-image-wrapper:hover,
+    body.editor-active .story-card:hover,
+    body.editor-active .experience-card:hover,
+    body.editor-active .testimonial-break blockquote:hover,
+    body.editor-active .hero-content:hover,
+    body.editor-active .about-text:hover,
+    body.editor-active .contact-left:hover {
+      outline-color: rgba(224,122,74,0.5);
+    }
+    body.editor-active [data-editable].selected {
+      outline: 2px solid #e07a4a !important;
+    }
+
+    .position-tooltip {
+      display: none;
+      position: fixed;
+      z-index: 10004;
+      background: rgba(20,20,20,0.9);
+      color: #fff;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-family: monospace;
+      border-radius: 3px;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .position-tooltip.visible { display: block; }
+
+    .editor-context-menu {
+      display: none;
+      position: fixed;
+      z-index: 10005;
+      background: rgba(20,20,20,0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 4px 0;
+      min-width: 170px;
+    }
+    body.editor-active .editor-context-menu.visible { display: block; }
+    .editor-context-menu button {
+      display: block; width: 100%;
+      padding: 8px 16px; text-align: left;
+      font-size: 12px; font-family: 'Montserrat', sans-serif;
+      color: rgba(255,255,255,0.85);
+      border: none; background: none; cursor: pointer;
+    }
+    .editor-context-menu button:hover {
+      background: rgba(255,255,255,0.1); color: #fff;
+    }
+
+    .resize-handle {
+      display: none;
+      position: absolute;
+      width: 8px; height: 8px;
+      background: #e07a4a;
+      border: 1px solid #fff;
+      z-index: 10;
+    }
+    body.editor-active [data-editable].selected .resize-handle { display: block; }
+    .resize-handle--nw { top: -4px; left: -4px; cursor: nw-resize; }
+    .resize-handle--ne { top: -4px; right: -4px; cursor: ne-resize; }
+    .resize-handle--sw { bottom: -4px; left: -4px; cursor: sw-resize; }
+    .resize-handle--se { bottom: -4px; right: -4px; cursor: se-resize; }
   </style>
 </head>
 <body>
+
+  <!-- ── EDITOR TOOLBAR ── -->
+  <div class="editor-toolbar">
+    <span class="editor-toolbar__label">Editor Mode</span>
+    <div class="editor-toolbar__actions">
+      <button class="save-btn" onclick="editorSave()">Save</button>
+      <button onclick="editorExport()">Export JSON</button>
+      <button onclick="editorReset()">Reset</button>
+    </div>
+  </div>
+  <div class="position-tooltip" id="posTooltip"></div>
+  <div class="editor-context-menu" id="contextMenu">
+    <button onclick="editorSwapPhoto()">Swap Photo</button>
+    <button onclick="editorTextColor()">Text Color</button>
+    <button onclick="editorFontSize()">Font Size</button>
+    <button onclick="editorEditText()">Edit Text</button>
+    <button onclick="editorDelete()">Delete Element</button>
+  </div>
+  <input type="file" id="photoSwapInput" accept="image/*" style="display:none;">
 
   <!-- ── NAVIGATION ── -->
   <nav class="nav" id="nav">
@@ -1230,6 +1367,297 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
+
+    // ── VISUAL EDITOR ──
+    (function() {
+      const STORAGE_KEY = 'msilvano-editor-layout';
+      let editorActive = false;
+      let selectedEl = null;
+      let contextTarget = null;
+      const tooltip = document.getElementById('posTooltip');
+      const contextMenu = document.getElementById('contextMenu');
+      const photoSwapInput = document.getElementById('photoSwapInput');
+
+      // Auto-tag editable elements
+      function initEditables() {
+        let id = 0;
+        // Images in galleries
+        document.querySelectorAll('.gallery-item').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'img-' + (id++));
+            el.style.position = 'relative';
+            el.innerHTML += '<div class="resize-handle resize-handle--nw"></div><div class="resize-handle resize-handle--ne"></div><div class="resize-handle resize-handle--sw"></div><div class="resize-handle resize-handle--se"></div>';
+          }
+        });
+        // Story cards
+        document.querySelectorAll('.story-card').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'story-' + (id++));
+          }
+        });
+        // Testimonial quotes
+        document.querySelectorAll('.testimonial-break blockquote').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'quote-' + (id++));
+          }
+        });
+        // About text
+        document.querySelectorAll('.about-text p, .about-text h2, .about-eyebrow').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'about-' + (id++));
+          }
+        });
+        // Hero elements
+        document.querySelectorAll('.hero-subtitle, .hero-cta').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'hero-' + (id++));
+          }
+        });
+        // Section titles
+        document.querySelectorAll('.section-eyebrow, .section-title, .section-subtitle').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'section-' + (id++));
+          }
+        });
+        // Experience cards
+        document.querySelectorAll('.experience-card h3, .experience-price, .experience-desc').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'exp-' + (id++));
+          }
+        });
+        // Contact text
+        document.querySelectorAll('.contact-left h3, .contact-left p').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'contact-' + (id++));
+          }
+        });
+        // FAQ questions
+        document.querySelectorAll('.faq-question, .faq-answer-inner').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'faq-' + (id++));
+          }
+        });
+        // About image
+        document.querySelectorAll('.about-image').forEach(function(el) {
+          if (!el.getAttribute('data-editable')) {
+            el.setAttribute('data-editable', 'aboutimg-' + (id++));
+          }
+        });
+      }
+      initEditables();
+
+      // Toggle editor
+      document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === '.') {
+          e.preventDefault();
+          editorActive = !editorActive;
+          document.body.classList.toggle('editor-active', editorActive);
+          if (!editorActive) {
+            deselectAll();
+            tooltip.classList.remove('visible');
+            contextMenu.classList.remove('visible');
+          }
+        }
+      });
+
+      function deselectAll() {
+        document.querySelectorAll('[data-editable].selected').forEach(function(el) {
+          el.classList.remove('selected');
+        });
+        selectedEl = null;
+      }
+
+      // Click to select
+      document.addEventListener('mousedown', function(e) {
+        if (!editorActive) return;
+        if (e.target.closest('.editor-toolbar') || e.target.closest('.editor-context-menu')) return;
+
+        const cel = e.target.closest('[data-editable]');
+        if (cel) {
+          deselectAll();
+          cel.classList.add('selected');
+          selectedEl = cel;
+        } else {
+          deselectAll();
+        }
+      });
+
+      // Right-click context menu
+      document.addEventListener('contextmenu', function(e) {
+        if (!editorActive) return;
+        const cel = e.target.closest('[data-editable]');
+        if (cel) {
+          e.preventDefault();
+          contextTarget = cel;
+          deselectAll();
+          cel.classList.add('selected');
+          selectedEl = cel;
+          contextMenu.style.left = e.clientX + 'px';
+          contextMenu.style.top = e.clientY + 'px';
+          contextMenu.classList.add('visible');
+        }
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.editor-context-menu')) {
+          contextMenu.classList.remove('visible');
+        }
+      });
+
+      // Swap photo
+      window.editorSwapPhoto = function() {
+        contextMenu.classList.remove('visible');
+        if (!contextTarget) return;
+        const img = contextTarget.querySelector('img');
+        if (!img) { showNotification('Select an image element'); return; }
+        photoSwapInput.click();
+        photoSwapInput.onchange = function() {
+          const file = this.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = function(ev) { img.src = ev.target.result; showNotification('Photo swapped'); };
+          reader.readAsDataURL(file);
+          this.value = '';
+        };
+      };
+
+      // Text color
+      window.editorTextColor = function() {
+        contextMenu.classList.remove('visible');
+        if (!contextTarget) return;
+        var picker = document.createElement('input');
+        picker.type = 'color';
+        picker.value = rgbToHex(getComputedStyle(contextTarget).color);
+        picker.style.cssText = 'position:fixed;top:-100px;';
+        document.body.appendChild(picker);
+        picker.click();
+        picker.addEventListener('input', function() {
+          contextTarget.style.color = picker.value;
+        });
+        picker.addEventListener('change', function() {
+          showNotification('Color updated');
+          picker.remove();
+        });
+        picker.addEventListener('blur', function() { setTimeout(function() { picker.remove(); }, 200); });
+      };
+
+      function rgbToHex(rgb) {
+        if (rgb.startsWith('#')) return rgb;
+        var m = rgb.match(/\d+/g);
+        if (!m) return '#1a1a1a';
+        return '#' + m.slice(0,3).map(function(x) { return parseInt(x).toString(16).padStart(2,'0'); }).join('');
+      }
+
+      // Font size
+      window.editorFontSize = function() {
+        contextMenu.classList.remove('visible');
+        if (!contextTarget) return;
+        var current = getComputedStyle(contextTarget).fontSize;
+        var newSize = prompt('Font size (e.g. 24px, 1.2rem, clamp(16px,2vw,28px)):', current);
+        if (newSize) {
+          contextTarget.style.fontSize = newSize;
+          showNotification('Font size updated');
+        }
+      };
+
+      // Edit text inline
+      window.editorEditText = function() {
+        contextMenu.classList.remove('visible');
+        if (!contextTarget) return;
+        contextTarget.setAttribute('contenteditable', 'true');
+        contextTarget.focus();
+        contextTarget.addEventListener('blur', function handler() {
+          contextTarget.removeAttribute('contenteditable');
+          contextTarget.removeEventListener('blur', handler);
+          showNotification('Text updated');
+        });
+      };
+
+      // Delete element
+      window.editorDelete = function() {
+        contextMenu.classList.remove('visible');
+        if (!contextTarget) return;
+        if (confirm('Delete this element?')) {
+          contextTarget.remove();
+          contextTarget = null;
+          selectedEl = null;
+          showNotification('Element deleted');
+        }
+      };
+
+      // Save / Load / Export / Reset
+      function gatherLayout() {
+        var elements = {};
+        document.querySelectorAll('[data-editable]').forEach(function(el) {
+          var eid = el.getAttribute('data-editable');
+          var img = el.querySelector('img');
+          elements[eid] = {
+            color: el.style.color || null,
+            fontSize: el.style.fontSize || null,
+            innerHTML: el.tagName === 'BUTTON' || el.closest('.testimonial-break') || el.closest('.about-text') || el.closest('.contact-left') || el.closest('.hero-content') || el.closest('.section-title,.section-eyebrow,.section-subtitle') ? el.innerHTML : null,
+            imgSrc: img && img.src.startsWith('data:') ? img.src : null,
+            display: el.style.display || null
+          };
+        });
+        return { v: 1, elements: elements };
+      }
+
+      function applyLayout(data) {
+        if (!data || !data.elements) return;
+        Object.keys(data.elements).forEach(function(eid) {
+          var el = document.querySelector('[data-editable="' + eid + '"]');
+          if (!el) return;
+          var d = data.elements[eid];
+          if (d.color) el.style.color = d.color;
+          if (d.fontSize) el.style.fontSize = d.fontSize;
+          if (d.innerHTML !== null) el.innerHTML = d.innerHTML;
+          if (d.imgSrc) {
+            var img = el.querySelector('img');
+            if (img) img.src = d.imgSrc;
+          }
+          if (d.display) el.style.display = d.display;
+        });
+      }
+
+      window.editorSave = function() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherLayout()));
+        showNotification('Layout saved');
+      };
+
+      window.editorExport = function() {
+        var data = gatherLayout();
+        var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'layout.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      };
+
+      window.editorReset = function() {
+        if (confirm('Reset all changes? This clears saved edits.')) {
+          localStorage.removeItem(STORAGE_KEY);
+          location.reload();
+        }
+      };
+
+      function showNotification(msg) {
+        var n = document.createElement('div');
+        n.textContent = msg;
+        n.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(20,20,20,0.9);color:#fff;padding:8px 24px;font-size:12px;border-radius:4px;z-index:10003;letter-spacing:0.05em;transition:opacity 0.4s;font-family:Montserrat,sans-serif;';
+        document.body.appendChild(n);
+        setTimeout(function() { n.style.opacity = '0'; }, 1500);
+        setTimeout(function() { n.remove(); }, 2000);
+      }
+
+      // Load saved layout on page load
+      try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) applyLayout(JSON.parse(saved));
+      } catch (e) {
+        console.warn('Could not load saved layout:', e);
+      }
+    })();
   </script>
 </body>
 </html>
