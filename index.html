@@ -36,6 +36,12 @@
   <meta name="theme-color" content="#faf8f5">
   <link rel="canonical" href="https://www.michaelsilvano.com/">
 
+  <meta name="subject" content="Wedding Photography">
+  <meta name="classification" content="Wedding Photography Services">
+  <meta name="category" content="Wedding Photographer">
+  <meta name="coverage" content="Boston, Massachusetts, New England, United States">
+  <meta name="distribution" content="global">
+
   <meta name="geo.region" content="US-MA">
   <meta name="geo.placename" content="Wakefield, Massachusetts">
   <meta name="geo.position" content="42.5006;-71.0726">
@@ -162,6 +168,15 @@
         "author": { "@type": "Person", "name": "Google Reviewer" }
       }
     ],
+    "foundingDate": "2015",
+    "numberOfEmployees": {"@type": "QuantitativeValue", "value": 1},
+    "knowsAbout": ["Wedding Photography", "Film Photography", "Editorial Wedding Photography", "Destination Wedding Photography", "Drone Wedding Photography", "Engagement Photography", "Couples Portraits", "Wedding Day Timeline Planning", "Fine Art Wedding Photography", "Photojournalistic Wedding Photography", "35mm Film Wedding Photography", "Boston Wedding Venues", "New England Wedding Venues", "Newport Rhode Island Weddings", "Cape Cod Weddings"],
+    "hasCredential": [
+      {"@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "FAA Part 107 Remote Pilot Certificate"},
+      {"@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Fully Insured - CNA Insurance Companies"}
+    ],
+    "award": ["Junebug Weddings Best Wedding Photographer Hotlist", "WeddingWire Couples' Choice Award"],
+    "slogan": "Documenting love stories across New England",
     "sameAs": [
       "https://www.instagram.com/michaelsilvano/",
       "https://www.facebook.com/michaelsilvanophotography/",
@@ -245,6 +260,19 @@
         }
       }
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Michael Silvano Photography | Boston & New England Wedding Photographer",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".about-text p", ".section-subtitle", ".hero-subtitle", ".experience-desc"]
+    },
+    "mainEntity": {"@id": "https://www.michaelsilvano.com/#business"}
   }
   </script>
 
@@ -881,7 +909,9 @@
       .about-grid { gap: 3rem; }
       .about-grid > * { min-width: 0; max-width: 100%; overflow: hidden; }
       .featured-gallery { column-count: 3; }
-      .stories-grid { grid-template-columns: 1fr; max-width: 500px; }
+      .stories-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .story-card .story-image { aspect-ratio: 4/5; }
+      .story-card.reveal { opacity: 1; transform: translateY(0); }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 2rem; text-align: center; }
       .about-image-wrapper::before { display: none; }
@@ -1077,7 +1107,7 @@
     Limited dates remaining for 2026 · Now booking 2027 <a href="#contact">Inquire</a>
   </div>
 
-  <section class="hero">
+  <section class="hero" aria-label="Hero - Michael Silvano Wedding Photography Boston">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <h1 class="sr-only">Michael Silvano Photography — Boston & New England Wedding Photographer</h1>
@@ -1095,7 +1125,7 @@
   </section>
 
   <!-- ── FEATURED GALLERY ── -->
-  <section class="featured-gallery" id="portfolio">
+  <section class="featured-gallery" id="portfolio" aria-label="Wedding Photography Portfolio">
     <div class="gallery-item"><img src="images/portfolio/000062850012.webp" alt="Wedding dress in bridal suite" loading="lazy"><div class="overlay"></div></div>
     <div class="gallery-item"><img src="images/portfolio/098A4735.webp" alt="Bridal shoes and floral details" loading="lazy"><div class="overlay"></div></div>
     <div class="gallery-item"><img src="images/portfolio/OL9A2817.webp" alt="Invitation flat lay with rings" loading="lazy"><div class="overlay"></div></div>
@@ -1119,7 +1149,7 @@
   </section>
 
   <!-- ── PORTFOLIO QUOTE BREAK ── -->
-  <div class="testimonial-break">
+  <div class="testimonial-break" role="complementary" aria-label="Client Testimonial">
     <blockquote>"Michael is a breath of fresh air. When he walked in the door I felt an immediate calmness which was extremely welcomed on our wedding day."</blockquote>
     <cite></cite>
     <a href="#contact" class="testimonial-cta">Start the Conversation</a>
@@ -1145,14 +1175,14 @@
   </section>
 
   <!-- ── TESTIMONIAL 1 ── -->
-  <div class="testimonial-break">
+  <div class="testimonial-break" role="complementary" aria-label="Client Testimonial">
     <blockquote>"The search for your wedding photographer ends here with Michael. My husband and I are so incredibly grateful we were able to find someone as attentive, genuine, calming, and amazing to be our wedding photographer."</blockquote>
     <cite></cite>
     <a href="#contact" class="testimonial-cta">Let's Talk About Your Day</a>
   </div>
 
   <!-- ── ABOUT ── -->
-  <section id="about">
+  <section id="about" aria-label="About Michael Silvano Wedding Photographer">
     <div class="about-grid">
       <div class="about-image-wrapper">
         <div class="about-image">
@@ -1174,21 +1204,21 @@
   </section>
 
   <!-- ── TESTIMONIAL 4 ── -->
-  <div class="testimonial-break">
+  <div class="testimonial-break" role="complementary" aria-label="Client Testimonial">
     <blockquote>"What you are getting with Michael Silvano as your photographer is someone that cares deeply about you, your photos and how they will make you feel through the years. His style is romantic, artistic and incredibly timeless."</blockquote>
     <cite></cite>
     <a href="#contact" class="testimonial-cta">See If Your Date Is Available</a>
   </div>
 
   <!-- ── TESTIMONIAL 2 ── -->
-  <div class="testimonial-break">
+  <div class="testimonial-break" role="complementary" aria-label="Client Testimonial">
     <blockquote>"Not only is Michael massively talented, he's extremely easy to work with while also being completely professional. Michael was the only photographer for my destination elopement, and the pictures that he captured were breathtaking and effortless."</blockquote>
     <cite></cite>
     <a href="#contact" class="testimonial-cta">Begin Your Story</a>
   </div>
 
   <!-- ── FEATURED STORIES ── -->
-  <section id="stories">
+  <section id="stories" aria-label="Featured Wedding Stories New England">
     <p class="section-eyebrow">Featured Stories</p>
     <h2 class="section-title">Real Weddings</h2>
     <p class="section-subtitle">Every celebration has a rhythm — a pace and feeling all its own. Here are a few of the love stories I've had the privilege of documenting.</p>
@@ -1228,14 +1258,14 @@
   </section>
 
   <!-- ── TESTIMONIAL 3 ── -->
-  <div class="testimonial-break">
+  <div class="testimonial-break" role="complementary" aria-label="Client Testimonial">
     <blockquote>"Michael is not only a very talented and detail oriented photographer, but he's an amazing person all around. He never once dropped the smile from his face."</blockquote>
     <cite></cite>
     <a href="#contact" class="testimonial-cta">Inquire About Your Wedding</a>
   </div>
 
   <!-- ── FAQ ── -->
-  <section id="faq">
+  <section id="faq" aria-label="Wedding Photography FAQ">
     <p class="section-eyebrow">Questions</p>
     <h2 class="section-title">Frequently Asked</h2>
     <div class="gold-line"></div>
@@ -1332,7 +1362,7 @@
   </section>
 
   <!-- ── CONTACT ── -->
-  <section id="contact">
+  <section id="contact" aria-label="Contact Boston Wedding Photographer">
     <div class="contact-grid">
       <div class="contact-left">
         <h3>I'd Love to<br>Hear Your Story</h3>
