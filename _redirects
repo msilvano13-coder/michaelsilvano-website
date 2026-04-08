@@ -1,0 +1,22 @@
+# Redirects from old Wix site URLs to new site
+# Format: old-path  new-path  status-code
+
+/contact                                            /#contact           301
+/faq                                                /#faq               301
+/reviews                                            /                   301
+/about                                              /#about             301
+/weddings                                           /                   301
+/super8                                             /                   301
+/commercial                                         /                   301
+/portfolio                                          /                   301
+
+# Old blog post URLs
+/post/gretchen-and-matt-s-willow-spring-vineyard-wedding    /           301
+/post/*                                             /                   301
+
+# Common Wix path patterns
+/blog/*                                             /                   301
+/gallery                                            /                   301
+/pricing                                            /#pricing           301
+/book                                               /#contact           301
+/booking                                            /#contact           301
