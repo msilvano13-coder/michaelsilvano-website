@@ -760,6 +760,23 @@
     }
     .urgency-banner a:hover { opacity: 0.7; }
 
+    /* ── COMMERCIAL LINK (top right, discreet) ── */
+    .commercial-link {
+      position: fixed;
+      top: 0.7rem;
+      right: 1.5rem;
+      z-index: 102;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(250, 248, 245, 0.55);
+      transition: color 0.3s;
+      padding: 0.3rem 0.1rem;
+    }
+    .commercial-link:hover { color: var(--peach); }
+    @media (max-width: 900px) { .commercial-link { display: none; } }
+
     /* ── REVIEW BADGE ── */
     .review-badge {
       display: inline-flex;
@@ -1100,12 +1117,16 @@
     <a href="#stories" onclick="toggleMobile()">Stories</a>
     <a href="#faq" onclick="toggleMobile()">FAQ</a>
     <a href="#contact" onclick="toggleMobile()">Inquire</a>
+    <a href="commercial.html">Commercial</a>
   </div>
 
   <!-- ── HERO ── -->
   <div class="urgency-banner">
     Limited dates remaining for 2026 · Now booking 2027 <a href="#contact">Inquire</a>
   </div>
+
+  <!-- ── COMMERCIAL LINK (discreet, top-right) ── -->
+  <a href="commercial.html" class="commercial-link">Commercial</a>
 
   <section class="hero" aria-label="Hero - Michael Silvano Wedding Photography Boston">
     <div class="hero-bg"></div>
