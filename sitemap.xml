@@ -69,4 +69,14 @@
       <image:title>Commercial and product photography - Michael Silvano</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.michaelsilvano.com/events.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/event-photos/098A3556.webp</image:loc>
+      <image:title>Corporate event and gala photography - Michael Silvano</image:title>
+    </image:image>
+  </url>
 </urlset>
