@@ -865,8 +865,101 @@
       font-size: 1.3rem; color: var(--dark);
       font-style: italic; margin-bottom: 0.5rem;
     }
-    .contact-right #TaveContactForm {
-      border: none; width: 1px; min-width: 100%;
+
+    #MSPInquiryForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #MSPInquiryForm label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+    #MSPInquiryForm input,
+    #MSPInquiryForm select {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1px solid var(--champagne);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      transition: border-color 0.25s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    #MSPInquiryForm select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%237a7a7a' d='M6 8L0 0h12z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    #MSPInquiryForm input:focus,
+    #MSPInquiryForm select:focus {
+      outline: none;
+      border-color: var(--peach);
+    }
+    #MSPInquiryForm input::placeholder {
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+    #MSPInquiryForm .msp-honeypot {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .msp-submit {
+      margin-top: 0.5rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      border: 1px solid var(--peach);
+      color: var(--peach);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    .msp-submit:hover:not(:disabled) {
+      background: var(--peach);
+      color: var(--white);
+    }
+    .msp-submit:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+    .msp-error {
+      margin-top: 0.5rem;
+      color: #b04a3a;
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+    .msp-thanks {
+      padding: 2rem 0;
+    }
+    .msp-thanks h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .msp-thanks p {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
     }
 
     /* ── FOOTER ── */
@@ -1406,10 +1499,60 @@
       </div>
       <div class="contact-right">
         <h4>Send an Inquiry</h4>
-        <style>#TaveContactForm { width: 1px; min-width: 100%; }</style>
-        <iframe id="TaveContactForm" src="https://michael-silvano-photography.vsco.page/inline/contact/contact?tpl=20260323&resizer=4.2.10" scrolling="no" frameborder="0"></iframe>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.10/iframeResizer.min.js" integrity="sha256-0FsDr6k3iiIaao/F1olkJHUfEU/eGSYClQ7ZhVc2md8=" crossorigin="anonymous"></script>
-        <script>iFrameResize({log: false}, "#TaveContactForm")</script>
+        <form id="MSPInquiryForm" novalidate>
+          <!-- honeypot — bots fill it; real users never see it -->
+          <label class="msp-honeypot" aria-hidden="true">
+            Your website (leave blank)
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+
+          <label>
+            <span>Name</span>
+            <input type="text" name="primaryName" required autocomplete="name">
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" name="primaryEmail" required autocomplete="email">
+          </label>
+
+          <label>
+            <span>Mobile phone</span>
+            <input type="tel" name="primaryPhone" required autocomplete="tel">
+          </label>
+
+          <label>
+            <span>How did you hear about me?</span>
+            <select name="referralSource">
+              <option value="">Select one</option>
+              <option>Facebook</option>
+              <option>Instagram</option>
+              <option>Google</option>
+              <option>Past Bride</option>
+              <option>Referral from Friend or Family</option>
+              <option>Vendor Referral</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Wedding date</span>
+            <input type="date" name="eventDate">
+          </label>
+
+          <label>
+            <span>Venue / photography budget</span>
+            <input type="text" name="venueBudget" placeholder="e.g. The Liberty Hotel — $5,000 budget">
+          </label>
+
+          <button type="submit" class="msp-submit">Send inquiry</button>
+
+          <p class="msp-error" role="alert" hidden></p>
+        </form>
+
+        <div class="msp-thanks" hidden>
+          <h5>Thank you — your inquiry is in.</h5>
+          <p>I'll get back to you within 24 hours via email or text. From there we can set up a FaceTime or phone call to talk about your wedding plans.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1787,6 +1930,75 @@
       });
       img.parentElement.appendChild(btn);
     });
+  </script>
+
+  <!-- ── INQUIRY FORM ── -->
+  <script>
+    (function () {
+      var form = document.getElementById("MSPInquiryForm");
+      if (!form) return;
+
+      var thanks = form.parentElement.querySelector(".msp-thanks");
+      var errorEl = form.querySelector(".msp-error");
+      var submitBtn = form.querySelector(".msp-submit");
+
+      var ENDPOINT = "https://inbox-dashboard-five.vercel.app/api/inquiries";
+
+      function showError(msg) {
+        errorEl.textContent = msg;
+        errorEl.hidden = false;
+      }
+      function clearError() {
+        errorEl.textContent = "";
+        errorEl.hidden = true;
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        clearError();
+
+        var fd = new FormData(form);
+        var payload = {
+          primaryName: (fd.get("primaryName") || "").toString().trim(),
+          primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
+          primaryPhone: (fd.get("primaryPhone") || "").toString().trim(),
+          referralSource: (fd.get("referralSource") || "").toString() || null,
+          eventDate: (fd.get("eventDate") || "").toString() || null,
+          venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
+          website: (fd.get("website") || "").toString(),
+        };
+
+        if (!payload.primaryName) return showError("Please share your name.");
+        if (!payload.primaryEmail) return showError("Please share your email.");
+        if (!payload.primaryPhone) return showError("Please share a mobile phone number.");
+
+        submitBtn.disabled = true;
+        var originalLabel = submitBtn.textContent;
+        submitBtn.textContent = "Sending…";
+
+        try {
+          var res = await fetch(ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) {
+            var data = {};
+            try { data = await res.json(); } catch (_) {}
+            showError(data.error || "Something went wrong — please try again or email michael@michaelsilvano.com directly.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+            return;
+          }
+          form.hidden = true;
+          if (thanks) thanks.hidden = false;
+        } catch (err) {
+          showError("Network hiccup — please try again, or email michael@michaelsilvano.com directly.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      });
+    })();
   </script>
 </body>
 </html>
