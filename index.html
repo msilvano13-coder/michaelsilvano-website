@@ -1950,6 +1950,23 @@
           }
           form.hidden = true;
           if (thanks) thanks.hidden = false;
+
+          // Meta Pixel Lead event — fires only on confirmed successful submit.
+          // eventID lets a future server-side CAPI fire dedup against this one.
+          if (window.fbq) {
+            try {
+              fbq("init", "350269752919930", {
+                em: payload.primaryEmail,
+                ph: payload.primaryPhone.replace(/\D/g, "")
+              });
+              fbq("track", "Lead", {
+                content_name: "Inquiry Form",
+                content_category: "Wedding Photography"
+              }, {
+                eventID: "lead_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10)
+              });
+            } catch (_) { /* never break the form on tracking errors */ }
+          }
         } catch (err) {
           showError("Network hiccup — please try again, or email michael@michaelsilvano.com directly.");
           submitBtn.disabled = false;
