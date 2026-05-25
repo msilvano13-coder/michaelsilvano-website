@@ -1437,9 +1437,9 @@
   <section id="contact" aria-label="Contact Boston Wedding Photographer">
     <div class="contact-grid">
       <div class="contact-left">
-        <h3>I'd Love to<br>Hear Your Story</h3>
-        <p>Whether you just got engaged or you're deep in planning, tell me a little about your day. I'll be in touch within 24 hours — no pressure, just a conversation.</p>
-        <p><em>Currently booking 2026 & 2027 weddings.</em></p>
+        <h3>Let's Make<br>Something Together</h3>
+        <p>Whether it's a wedding, a gala, a commercial shoot, or something in between — tell me a little about what you have in mind. I'll be in touch within 24 hours.</p>
+        <p><em>Currently booking 2026 & 2027.</em></p>
         <div class="contact-details">
           <div class="contact-detail-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1480,26 +1480,39 @@
           </label>
 
           <label>
+            <span>What's this for?</span>
+            <select name="projectType">
+              <option value="">Select one</option>
+              <option>Wedding</option>
+              <option>Engagement Session</option>
+              <option>Family / Portrait Session</option>
+              <option>Corporate Event or Gala</option>
+              <option>Commercial / Brand Shoot</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
             <span>How did you hear about me?</span>
             <select name="referralSource">
               <option value="">Select one</option>
               <option>Facebook</option>
               <option>Instagram</option>
               <option>Google</option>
-              <option>Past Bride</option>
+              <option>Past Client</option>
               <option>Referral from Friend or Family</option>
               <option>Vendor Referral</option>
             </select>
           </label>
 
           <label>
-            <span>Wedding date</span>
+            <span>Event date (if known)</span>
             <input type="date" name="eventDate">
           </label>
 
           <label>
-            <span>Venue / photography budget</span>
-            <input type="text" name="venueBudget" placeholder="e.g. The Liberty Hotel — $5,000 budget">
+            <span>Location & budget</span>
+            <input type="text" name="venueBudget" placeholder="e.g. The Liberty Hotel, Boston — $5,000 budget">
           </label>
 
           <button type="submit" class="msp-submit">Send inquiry</button>
@@ -1509,7 +1522,7 @@
 
         <div class="msp-thanks" hidden>
           <h5>Thank you — your inquiry is in.</h5>
-          <p>I'll get back to you within 24 hours via email or text. From there we can set up a FaceTime or phone call to talk about your wedding plans.</p>
+          <p>I'll get back to you within 24 hours via email or text. From there we can set up a FaceTime or phone call to talk through what you have in mind.</p>
         </div>
       </div>
     </div>
@@ -1920,6 +1933,7 @@
           primaryName: (fd.get("primaryName") || "").toString().trim(),
           primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
           primaryPhone: (fd.get("primaryPhone") || "").toString().trim(),
+          projectType: (fd.get("projectType") || "").toString() || null,
           referralSource: (fd.get("referralSource") || "").toString() || null,
           eventDate: (fd.get("eventDate") || "").toString() || null,
           venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
