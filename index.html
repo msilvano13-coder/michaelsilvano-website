@@ -1480,19 +1480,6 @@
           </label>
 
           <label>
-            <span>What's this for?</span>
-            <select name="projectType">
-              <option value="">Select one</option>
-              <option>Wedding</option>
-              <option>Engagement Session</option>
-              <option>Family / Portrait Session</option>
-              <option>Corporate Event or Gala</option>
-              <option>Commercial / Brand Shoot</option>
-              <option>Other</option>
-            </select>
-          </label>
-
-          <label>
             <span>How did you hear about me?</span>
             <select name="referralSource">
               <option value="">Select one</option>
@@ -1511,8 +1498,8 @@
           </label>
 
           <label>
-            <span>Location & budget</span>
-            <input type="text" name="venueBudget" placeholder="e.g. The Liberty Hotel, Boston — $5,000 budget">
+            <span>Venue / photography budget</span>
+            <input type="text" name="venueBudget" placeholder="e.g. The Liberty Hotel — $5,000 budget">
           </label>
 
           <button type="submit" class="msp-submit">Send inquiry</button>
@@ -1933,7 +1920,6 @@
           primaryName: (fd.get("primaryName") || "").toString().trim(),
           primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
           primaryPhone: (fd.get("primaryPhone") || "").toString().trim(),
-          projectType: (fd.get("projectType") || "").toString() || null,
           referralSource: (fd.get("referralSource") || "").toString() || null,
           eventDate: (fd.get("eventDate") || "").toString() || null,
           venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
