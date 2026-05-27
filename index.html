@@ -1493,13 +1493,24 @@
           </label>
 
           <label>
+            <span>Type of photography</span>
+            <select name="intakeType" required>
+              <option value="">Select one</option>
+              <option value="wedding">Wedding</option>
+              <option value="event">Event</option>
+              <option value="portrait">Portrait</option>
+              <option value="product">Product</option>
+            </select>
+          </label>
+
+          <label>
             <span>Event date (if known)</span>
             <input type="date" name="eventDate">
           </label>
 
           <label>
-            <span>Venue / photography budget</span>
-            <input type="text" name="venueBudget" placeholder="e.g. The Liberty Hotel — $5,000 budget">
+            <span>Budget</span>
+            <input type="text" name="venueBudget" placeholder="e.g. $5,000 budget">
           </label>
 
           <button type="submit" class="msp-submit">Send inquiry</button>
@@ -1921,6 +1932,7 @@
           primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
           primaryPhone: (fd.get("primaryPhone") || "").toString().trim(),
           referralSource: (fd.get("referralSource") || "").toString() || null,
+          intakeType: (fd.get("intakeType") || "").toString() || null,
           eventDate: (fd.get("eventDate") || "").toString() || null,
           venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
           website: (fd.get("website") || "").toString(),
@@ -1929,6 +1941,7 @@
         if (!payload.primaryName) return showError("Please share your name.");
         if (!payload.primaryEmail) return showError("Please share your email.");
         if (!payload.primaryPhone) return showError("Please share a mobile phone number.");
+        if (!payload.intakeType) return showError("Please pick a type of photography.");
 
         submitBtn.disabled = true;
         var originalLabel = submitBtn.textContent;
@@ -1953,15 +1966,24 @@
 
           // Meta Pixel Lead event — fires only on confirmed successful submit.
           // eventID lets a future server-side CAPI fire dedup against this one.
+          // content_category mirrors intakeType so portrait/event/product leads
+          // don't pollute the wedding-photography ad optimization audience.
           if (window.fbq) {
             try {
+              var categoryByType = {
+                wedding: "Wedding Photography",
+                event: "Event Photography",
+                portrait: "Portrait Photography",
+                product: "Product Photography"
+              };
+              var category = categoryByType[payload.intakeType] || "Photography";
               fbq("init", "350269752919930", {
                 em: payload.primaryEmail,
                 ph: payload.primaryPhone.replace(/\D/g, "")
               });
               fbq("track", "Lead", {
                 content_name: "Inquiry Form",
-                content_category: "Wedding Photography"
+                content_category: category
               }, {
                 eventID: "lead_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10)
               });
