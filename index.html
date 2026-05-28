@@ -1475,8 +1475,8 @@
           </label>
 
           <label>
-            <span>Mobile phone</span>
-            <input type="tel" name="primaryPhone" required autocomplete="tel">
+            <span>Mobile phone (optional)</span>
+            <input type="tel" name="primaryPhone" autocomplete="tel">
           </label>
 
           <label>
@@ -1489,6 +1489,7 @@
               <option>Past Client</option>
               <option>Referral from Friend or Family</option>
               <option>Vendor Referral</option>
+              <option>Outreach</option>
             </select>
           </label>
 
@@ -1509,8 +1510,8 @@
           </label>
 
           <label>
-            <span>Budget</span>
-            <input type="text" name="venueBudget" placeholder="e.g. $5,000 budget">
+            <span>Budget, venue, notes</span>
+            <input type="text" name="venueBudget" placeholder="e.g. $5,000 budget — The Liberty Hotel — anything else I should know">
           </label>
 
           <button type="submit" class="msp-submit">Send inquiry</button>
@@ -1940,7 +1941,6 @@
 
         if (!payload.primaryName) return showError("Please share your name.");
         if (!payload.primaryEmail) return showError("Please share your email.");
-        if (!payload.primaryPhone) return showError("Please share a mobile phone number.");
         if (!payload.intakeType) return showError("Please pick a type of photography.");
 
         submitBtn.disabled = true;
@@ -1977,10 +1977,9 @@
                 product: "Product Photography"
               };
               var category = categoryByType[payload.intakeType] || "Photography";
-              fbq("init", "350269752919930", {
-                em: payload.primaryEmail,
-                ph: payload.primaryPhone.replace(/\D/g, "")
-              });
+              var fbInit = { em: payload.primaryEmail };
+              if (payload.primaryPhone) fbInit.ph = payload.primaryPhone.replace(/\D/g, "");
+              fbq("init", "350269752919930", fbInit);
               fbq("track", "Lead", {
                 content_name: "Inquiry Form",
                 content_category: category
