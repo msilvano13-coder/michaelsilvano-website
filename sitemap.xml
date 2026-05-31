@@ -71,12 +71,26 @@
   </url>
   <url>
     <loc>https://www.michaelsilvano.com/events.html</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.michaelsilvano.com/event-photos/098A3556.webp</image:loc>
       <image:title>Corporate event and gala photography - Michael Silvano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.michaelsilvano.com/gallery-pem-skylight.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/pem-skylight/pem-10.webp</image:loc>
+      <image:title>Peabody Essex Museum event at Skylight Studios Woburn Massachusetts - Michael Silvano Photography</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/pem-skylight/pem-4.webp</image:loc>
+      <image:title>Guests at the Peabody Essex Museum event Skylight Studios Woburn MA</image:title>
     </image:image>
   </url>
 </urlset>
