@@ -71,12 +71,30 @@
   </url>
   <url>
     <loc>https://www.michaelsilvano.com/events.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://www.michaelsilvano.com/event-photos/098A3556.webp</image:loc>
       <image:title>Corporate event and gala photography - Michael Silvano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.michaelsilvano.com/gallery-cfma-granite-links.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/cfma-granite-links/cfma-7.webp</image:loc>
+      <image:title>Matthew Slater keynote at the 2026 CFMA event, Granite Links Golf Club, Quincy MA - Michael Silvano Photography</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/cfma-granite-links/cfma-6.webp</image:loc>
+      <image:title>Matthew Slater keynote with the Boston skyline behind him at Granite Links, CFMA event, Quincy MA</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/cfma-granite-links/cfma-2.webp</image:loc>
+      <image:title>CFMA members group portrait on the Granite Links terrace, Quincy Massachusetts</image:title>
     </image:image>
   </url>
   <url>
