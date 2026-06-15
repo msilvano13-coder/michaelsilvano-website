@@ -881,7 +881,8 @@
       font-weight: 400;
     }
     #MSPInquiryForm input,
-    #MSPInquiryForm select {
+    #MSPInquiryForm select,
+    #MSPInquiryForm textarea {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       font-weight: 300;
@@ -894,6 +895,12 @@
       -webkit-appearance: none;
       appearance: none;
     }
+    #MSPInquiryForm textarea {
+      width: 100%;
+      min-height: 5.5rem;
+      resize: vertical;
+      line-height: 1.6;
+    }
     #MSPInquiryForm select {
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%237a7a7a' d='M6 8L0 0h12z'/></svg>");
       background-repeat: no-repeat;
@@ -901,11 +908,13 @@
       padding-right: 2.5rem;
     }
     #MSPInquiryForm input:focus,
-    #MSPInquiryForm select:focus {
+    #MSPInquiryForm select:focus,
+    #MSPInquiryForm textarea:focus {
       outline: none;
       border-color: var(--peach);
     }
-    #MSPInquiryForm input::placeholder {
+    #MSPInquiryForm input::placeholder,
+    #MSPInquiryForm textarea::placeholder {
       color: var(--text-light);
       opacity: 0.7;
     }
@@ -1511,7 +1520,7 @@
 
           <label>
             <span>Budget, venue, notes</span>
-            <input type="text" name="venueBudget" autocomplete="off" placeholder="e.g. $5,000 budget — The Liberty Hotel — anything else I should know">
+            <textarea name="venueBudget" rows="3" autocomplete="off" autocapitalize="sentences" placeholder="e.g. $5,000 budget — The Liberty Hotel — anything else I should know"></textarea>
           </label>
 
           <button type="submit" class="msp-submit">Send inquiry</button>
