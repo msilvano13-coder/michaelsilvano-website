@@ -1940,6 +1940,10 @@
         clearError();
 
         var fd = new FormData(form);
+        // One shared Meta event id: sent to the server for the CAPI Lead AND
+        // reused by the browser pixel below, so Meta dedups the pair into one
+        // conversion instead of double-counting.
+        var leadEventId = "lead_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10);
         var payload = {
           primaryName: (fd.get("primaryName") || "").toString().trim(),
           primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
@@ -1949,6 +1953,7 @@
           eventDate: (fd.get("eventDate") || "").toString() || null,
           venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
           website: (fd.get("website") || "").toString(),
+          eventId: leadEventId,
         };
 
         if (!payload.primaryName) return showError("Please share your name.");
@@ -1996,7 +2001,7 @@
                 content_name: "Inquiry Form",
                 content_category: category
               }, {
-                eventID: "lead_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10)
+                eventID: leadEventId
               });
             } catch (_) { /* never break the form on tracking errors */ }
           }
