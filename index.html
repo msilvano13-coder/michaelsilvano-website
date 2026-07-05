@@ -1944,6 +1944,20 @@
         // reused by the browser pixel below, so Meta dedups the pair into one
         // conversion instead of double-counting.
         var leadEventId = "lead_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10);
+        // Meta click/browser cookies for CAPI attribution. _fbc holds the ad
+        // click id (Meta sets it from the fbclid URL param on landing) — build it
+        // from the URL as a fallback if the cookie hasn't been written yet. _fbp
+        // is the browser id. Both are sent raw to the server → CAPI user_data.
+        function mspCookie(name) {
+          var m = document.cookie.match("(^|; )" + name + "=([^;]+)");
+          return m ? decodeURIComponent(m[2]) : null;
+        }
+        var fbp = mspCookie("_fbp");
+        var fbc = mspCookie("_fbc");
+        if (!fbc) {
+          var fbclid = new URLSearchParams(window.location.search).get("fbclid");
+          if (fbclid) fbc = "fb.1." + Date.now() + "." + fbclid;
+        }
         var payload = {
           primaryName: (fd.get("primaryName") || "").toString().trim(),
           primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
@@ -1954,6 +1968,8 @@
           venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
           website: (fd.get("website") || "").toString(),
           eventId: leadEventId,
+          fbc: fbc,
+          fbp: fbp,
         };
 
         if (!payload.primaryName) return showError("Please share your name.");
