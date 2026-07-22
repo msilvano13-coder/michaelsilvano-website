@@ -23,7 +23,7 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# AI / LLM crawlers — allowed so this site can be cited in AI answers
+# AI / LLM crawlers, allowed so this site can be cited in AI answers
 User-agent: GPTBot
 Allow: /
 
@@ -66,7 +66,7 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# SEO / scraping bots — blocked
+# SEO / scraping bots, blocked
 User-agent: Bytespider
 Disallow: /
 

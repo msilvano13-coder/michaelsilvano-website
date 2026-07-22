@@ -20,7 +20,7 @@
 <div class="contact-right">
   <h4>Send an Inquiry</h4>
   <form id="MSPInquiryForm" novalidate>
-    <!-- honeypot — bots fill it; real users never see it -->
+    <!-- honeypot, bots fill it; real users never see it -->
     <label class="msp-honeypot" aria-hidden="true">
       Your website (leave blank)
       <input type="text" name="website" tabindex="-1" autocomplete="off">
@@ -81,7 +81,7 @@
   </form>
 
   <div class="msp-thanks" hidden>
-    <h5>Thank you — your inquiry is in.</h5>
+    <h5>Thank you. Your inquiry is in.</h5>
     <p>I'll get back to you within 24 hours via email or text. From there we can set up a FaceTime or phone call to talk about your wedding plans.</p>
   </div>
 </div>
@@ -141,7 +141,7 @@
     opacity: 0.7;
   }
 
-  /* Honeypot — kept off-screen but still in the DOM so bots see it */
+  /* Honeypot, kept off-screen but still in the DOM so bots see it */
   #MSPInquiryForm .msp-honeypot {
     position: absolute;
     left: -10000px;
@@ -234,7 +234,7 @@
         intakeType: (fd.get("intakeType") || "").toString() || null,
         eventDate: (fd.get("eventDate") || "").toString() || null,
         venueBudget: (fd.get("venueBudget") || "").toString().trim() || null,
-        // honeypot — must be empty
+        // honeypot, must be empty
         website: (fd.get("website") || "").toString(),
       };
 
@@ -257,12 +257,12 @@
         if (!res.ok) {
           var data = {};
           try { data = await res.json(); } catch (_) {}
-          showError(data.error || "Something went wrong — please try again or email michael@michaelsilvano.com directly.");
+          showError(data.error || "Something went wrong. Please try again or email michael@michaelsilvano.com directly.");
           submitBtn.disabled = false;
           submitBtn.textContent = originalLabel;
           return;
         }
-        // Success — swap the form for the thanks block.
+        // Success, swap the form for the thanks block.
         form.hidden = true;
         if (thanks) thanks.hidden = false;
 
@@ -270,7 +270,7 @@
         // if (typeof gtag === "function") gtag("event", "generate_lead", { event_category: "inquiry" });
         // if (typeof fbq === "function") fbq("track", "Lead");
       } catch (err) {
-        showError("Network hiccup — please try again, or email michael@michaelsilvano.com directly.");
+        showError("Network hiccup. Please try again, or email michael@michaelsilvano.com directly.");
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
       }

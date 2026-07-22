@@ -1,4 +1,4 @@
-// Gallery Editor — activate with ?edit in URL or Cmd+Shift+/
+// Gallery Editor, activate with ?edit in URL or Cmd+Shift+/
 (function() {
   var active = false;
   var selectedImg = null;
