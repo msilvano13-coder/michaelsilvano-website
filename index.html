@@ -1926,6 +1926,27 @@
 
       var ENDPOINT = "https://dashboard.michaelsilvano.com/api/inquiries";
 
+      // Campaign attribution: capture UTM tags + click ids from the landing
+      // URL and stash them in sessionStorage on first touch, so they survive
+      // the /contact -> /#contact rewrite and any in-session navigation before
+      // the user submits. First-touch wins (the ad click's params, not a later
+      // page view). Read back into the payload at submit time.
+      function mspAttribution() {
+        var KEY = "msp_attribution";
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem(KEY) || "{}"); } catch (_) {}
+        var params = new URLSearchParams(window.location.search);
+        ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"].forEach(function (k) {
+          var v = params.get(k);
+          if (v && !stored[k]) stored[k] = v; // first-touch wins
+        });
+        if (!stored.landing_url) stored.landing_url = window.location.href;
+        if (!stored.referrer && document.referrer) stored.referrer = document.referrer;
+        try { sessionStorage.setItem(KEY, JSON.stringify(stored)); } catch (_) {}
+        return stored;
+      }
+      mspAttribution(); // capture on first load, before any navigation strips the query
+
       function showError(msg) {
         errorEl.textContent = msg;
         errorEl.hidden = false;
@@ -1958,6 +1979,7 @@
           var fbclid = new URLSearchParams(window.location.search).get("fbclid");
           if (fbclid) fbc = "fb.1." + Date.now() + "." + fbclid;
         }
+        var attr = mspAttribution();
         var payload = {
           primaryName: (fd.get("primaryName") || "").toString().trim(),
           primaryEmail: (fd.get("primaryEmail") || "").toString().trim(),
@@ -1970,6 +1992,15 @@
           eventId: leadEventId,
           fbc: fbc,
           fbp: fbp,
+          fbclid: attr.fbclid || null,
+          gclid: attr.gclid || null,
+          utm_source: attr.utm_source || null,
+          utm_medium: attr.utm_medium || null,
+          utm_campaign: attr.utm_campaign || null,
+          utm_content: attr.utm_content || null,
+          utm_term: attr.utm_term || null,
+          landing_url: attr.landing_url || null,
+          referrer: attr.referrer || null,
         };
 
         if (!payload.primaryName) return showError("Please share your name.");
