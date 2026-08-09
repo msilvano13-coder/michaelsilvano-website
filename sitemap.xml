@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.michaelsilvano.com/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -13,12 +13,30 @@
   </url>
   <url>
     <loc>https://www.michaelsilvano.com/weddings.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://www.michaelsilvano.com/caite-sean/main.webp</image:loc>
       <image:title>Real weddings across New England - Michael Silvano Photography</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.michaelsilvano.com/gallery-colleen-max.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/colleen-max/main.webp</image:loc>
+      <image:title>Colleen and Max wedding at Aldrich Mansion Warwick Rhode Island, aerial first dance on the terrace - Michael Silvano Photography</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/colleen-max/cm-058.webp</image:loc>
+      <image:title>Wedding ceremony in the historic chapel at Aldrich Mansion, Warwick RI</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/colleen-max/cm-099.webp</image:loc>
+      <image:title>Aerial view of Aldrich Mansion at golden hour over Narragansett Bay, Warwick RI</image:title>
     </image:image>
   </url>
   <url>
