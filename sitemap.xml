@@ -162,6 +162,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.michaelsilvano.com/rsvp-portraits.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.michaelsilvano.com/images/rsvp-portraits-logo.jpg</image:loc>
+      <image:title>RSVP Portraits, the guest portrait studio by Michael Silvano Photography</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.michaelsilvano.com/gallery-cfma-granite-links.html</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
