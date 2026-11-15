@@ -330,6 +330,21 @@
       .price-band { flex-direction: column; align-items: flex-start; padding: 2.2rem 1.8rem; gap: 1.5rem; }
       .price-band .amount { text-align: left; }
     }
+    /* ── SAMPLE PORTRAITS (hidden until RSVP_PORTRAITS has entries) ── */
+    .portraits { padding: 5rem 2rem; background: var(--white); text-align: center; }
+    .portraits[hidden] { display: none; }
+    .portrait-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+      max-width: 1180px; margin: 3rem auto 0;
+    }
+    .portrait-grid img {
+      display: block; width: 100%; aspect-ratio: 4 / 5;
+      object-fit: cover; background: var(--cream);
+    }
+    @media (max-width: 900px) {
+      .portraits { padding: 3.5rem 1rem; }
+      .portrait-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    }
   </style>
 </head>
 <body>
@@ -360,6 +375,14 @@
       <a href="#inquire" class="btn btn-solid">Check your date</a>
       <a href="#how-it-works" class="btn btn-line">How it works</a>
     </div>
+  </section>
+
+  <!-- Sample portraits. Stays hidden until RSVP_PORTRAITS (script at the
+       bottom of this file) lists at least one image. -->
+  <section class="portraits" id="portraits" hidden>
+    <p class="section-label">The portraits</p>
+    <h2 class="section-title">Everyone you love, one frame at a time.</h2>
+    <div class="portrait-grid" id="rsvpPortraitGrid"></div>
   </section>
 
   <section class="steps" id="how-it-works">
@@ -524,6 +547,33 @@
   <footer class="gallery-footer">
     RSVP Portraits by <a href="/">Michael Silvano Photography</a> · Boston, MA
   </footer>
+
+  <!-- ── SAMPLE PORTRAITS ──
+       To publish portraits: put the files in images/rsvp/ (4:5 crop,
+       about 1200px wide, black and white) and list them here in display
+       order. Eight fills two rows on desktop. An empty list keeps the
+       section hidden. -->
+  <script>
+    (function () {
+      var RSVP_PORTRAITS = [
+        // { src: "images/rsvp/portrait-01.jpg", alt: "Black and white portrait of a wedding guest" },
+      ];
+      var section = document.getElementById("portraits");
+      var grid = document.getElementById("rsvpPortraitGrid");
+      if (!section || !grid || !RSVP_PORTRAITS.length) return;
+      RSVP_PORTRAITS.forEach(function (p) {
+        var img = document.createElement("img");
+        img.src = p.src;
+        img.alt = p.alt || "Black and white guest portrait by RSVP Portraits";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.width = 1200;
+        img.height = 1500;
+        grid.appendChild(img);
+      });
+      section.hidden = false;
+    })();
+  </script>
 
   <!-- ── RSVP PORTRAITS INQUIRY FORM ──
        Same endpoint and attribution capture as the home page form. The
